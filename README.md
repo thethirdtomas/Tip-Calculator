@@ -1,4 +1,5 @@
-# tip_calculator
+# Tip Calcultor
 
-![Android Flutter App](https://apprecs.org/gp/images/app-icons/300/4a/com.handyapps.tipnsplit.jpg)
+![Android Flutter App](https://raw.githubusercontent.com/dumpcoder/Tip-Calculator/master/example.jpg)
 ## Getting Started
+Clone Repo and run main.dart
