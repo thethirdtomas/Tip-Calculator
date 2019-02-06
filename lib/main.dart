@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Tip Calculator',
       theme: new ThemeData(
         primaryColor: Colors.black,
-        fontFamily: "roboto"
+        fontFamily: "Satisfy"
       ),
       home: Tip(),
     );

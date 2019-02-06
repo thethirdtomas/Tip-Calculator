@@ -30,6 +30,13 @@ class TipState extends State<Tip> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(bottom: 40),
+              child: Text(
+                "Tip Calculator",
+                style: TextStyle(fontSize: 40, color: Colors.white),
+              ),
+            ),
             Container( 
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
