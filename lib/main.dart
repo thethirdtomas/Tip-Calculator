@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tip Calculator',
       theme: new ThemeData(
-        primaryColor: Colors.blueAccent,
+        primaryColor: Colors.black,
+        fontFamily: "roboto"
       ),
       home: Tip(),
     );

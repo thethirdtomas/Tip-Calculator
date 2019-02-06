@@ -11,45 +11,60 @@ class TipState extends State<Tip> {
   double percentage = 15.0;
   double total = 0.0;
 
-  var ctr = new TextEditingController();
+  var ctr = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        title: Text("Tip Calculator++"),
-            ),
       //Main Container
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background.jpg"),
+            fit: BoxFit.cover,
+          )
+        ),
         padding: EdgeInsets.all(30),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container( 
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                color: Colors.white,
+              ),
               child: TextField(
                 controller: ctr,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: "Bill Amount(\$)",
+                  border: InputBorder.none,
+                  labelText: "Bill Amount",
+                  prefixIcon: Icon(Icons.monetization_on),
                   suffixIcon: GestureDetector(
                     onTap: reset,
-                    child: Icon(Icons.restore)
-                    ),
-                  ),
+                    child: Icon(Icons.clear_all)
+                  )
+                ),
                 onChanged: textChange,
               )
             ),
-            Container(
-              margin: EdgeInsets.only(top: 200),
-              child: Text(
-                "Tip: \$${tip.toStringAsFixed(2)}", 
-                style: TextStyle(color: getColor(), fontSize: 30) ,
-                ),
-            ),
             Container( 
+              margin: EdgeInsets.only(top: 20, bottom: 20),
+              padding: EdgeInsets.all(25),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15.0),
+              ),
               child: Column(
                 children: <Widget>[
+                  Text(
+                    "Tip: \$${tip.toStringAsFixed(2)}", 
+                    style: TextStyle(color: getColor(), fontSize: 30) ,
+                  ),
                   Slider(
+                    activeColor: getColor(),
                     value: percentage,
                     label: "${percentage.toStringAsFixed(0)}%",
                     min: 0,
@@ -61,7 +76,7 @@ class TipState extends State<Tip> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Radio( 
-                        activeColor: Colors.red,
+                        activeColor: Colors.red[300],
                         value: 10.0,
                         groupValue: percentage,
                         onChanged: updateTip,
@@ -75,7 +90,7 @@ class TipState extends State<Tip> {
                       ),
                       Text('15%'),
                       Radio( 
-                        activeColor: Colors.green,
+                        activeColor: Colors.greenAccent,
                         value: 20.0,
                         groupValue: percentage,
                         onChanged: updateTip,
@@ -86,7 +101,6 @@ class TipState extends State<Tip> {
                   ),
                   Text("Percentage: ${percentage.toStringAsFixed(0)}%"),
                   Text("Total: \$${total.toStringAsFixed(2)}"),
-
                 ],
               ),
             )
@@ -98,10 +112,11 @@ class TipState extends State<Tip> {
 
   reset(){
     setState(() {
-      ctr.clear();   
+      ctr.clear();
+      bill = 0.0;
+      percentage = 15.0;
       tip = 0.0;
-     percentage = 15.0;
-     bill = 0.0;
+      total = 0.0;
     });
   }
 
@@ -127,9 +142,9 @@ class TipState extends State<Tip> {
 
   Color getColor(){
     if (percentage <= 10)
-      return Colors.red;
+      return Colors.red[300];
     else if (percentage >= 20)
-      return Colors.green;
+      return Colors.greenAccent;
     else
       return Colors.black;
   }
